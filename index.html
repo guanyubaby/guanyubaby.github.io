@@ -1,34 +1,541 @@
-<?php
-$q=isset($_POST['q'])?($_POST['q']):'';
-if(is_array($q)){
-    $sites=array(
-        "徐冠宇"=>"徐冠宇最帅",
-"韩潇"=>"韩潇最美",
-"社会人"=>"社会人最社会"
-);
-foreach ($q as $val)
-{
-echo $sites[$val].PHP_EOL;
-}
 
-}
-else {
-?>
-<form action="" method="post" >
-    <select multiple="true" name="q[]">
-        <option value="徐冠宇">徐冠宇</option>
-        <option value="韩潇" selected>韩潇</option>
-        <option value="社会人">社会人</option>
-    </select>
-    <input type='submit' value='提交'>
-</form>
-<?php
-}
-
-?>">
-    名字: <input type="text" name="fname">
-    年龄: <input type="text" name="age">
-    <input type="submit" value="提交">
-</form>
+<html>
+<head>
+	<title>小游戏</title>
+	<meta charset="UTF-8"/>
+	<style type="text/css">
+		*{margin:0;padding:0}
+	</style>
+</head>
+<body >
+	<script>
+				window.onload=function(){
+					Game.exe();
+				
+				}
+	
+		var Game={
+		//启动程序
+			exe:function(){
+				
+				this.storeinit();//游戏商店初始化
+				this.operatorinit();//操作说明初始化
+				this.init();
+			
+			},
+			score:0,
+			experience:0,
+			bossnum:0,
+			grade:0,
+			pet1:0,
+		//游戏商店初始化
+			storeinit:function(){
+					//游戏商店等
+				var ogamestore=document.createElement("div");
+				ogamestore.id="ogamestore";
+				ogamestore.style.cssText="width:300px;height:500px;border:10px solid #fff;margin:0px 88px;text-align:center;position:absolute;overflow:hidden;";
+				document.body.appendChild(ogamestore);
+				var oH1=document.createElement("h1");
+				oH1.innerHTML="游戏商店";
+				oH1.style.cssText="color:#FF8C00;margin-top:50px;";
+				ogamestore.appendChild(oH1);
+			for(var i=0;i<4;i++){
+				var oP=document.createElement("p");
+				oP.index=i;
+				oP.style.cssText="font-size:14px;color:#00BFFF;width:150px;height:50px;margin:45px auto;text-align:center;background:#fff;line-height:40px;cursor:pointer";
+				oP.style.fontWeight="bold";
+				oP.onmouseenter=function(){
+						this.style.background="#ADFF2F";
+						this.style.color="#fff";
+				
+				};
+				oP.onmouseleave=function(){
+				    this.style.background="#fff";
+					this.style.color="#00BFFF";
+				
+				};
+				oP.onclick=function(e){
+					e=e||window.event;
+					Game.pet(e,ogamestore,this.index,ogamestore);
+				
+				};
+				switch(i)
+				{
+					case 0:
+					html="战机";
+					oP.style.fontWeight="bold";
+						break;
+					case 1:
+					html="子弹";
+					oP.style.fontWeight="bold";
+						break;
+					case 2:
+					html="宠物";
+					oP.style.fontWeight="bold";
+						break;
+					case 3:
+					html="等级";
+					//oP.style.color="#f00";
+					oP.style.fontWeight="bold";
+					break;
+				}
+				oP.innerHTML=html;
+				ogamestore.appendChild(oP);
+				}
+			
+			
+			},
+		//操作说明初始化
+		operatorinit:function(){
+			//
+				var ooexplain=document.createElement("div");
+				ooexplain.style.cssText="width:300px;height:500px;border:10px solid #fff;margin:0px 760px;text-align:center;position:absolute;overflow:hidden;";
+				document.body.appendChild(ooexplain);//添加游戏介绍
+				//介绍游戏操作
+				var oH1=document.createElement("h1");
+				oH1.innerHTML="操作说明";
+				oH1.style.cssText="color:red;margin-top:50px;";
+				var op11=document.createElement("p");
+				var op12=document.createElement("h2");
+				var op13=document.createElement("p");
+				op11.innerHTML="鼠标操作，控制飞机飞行方向，敌机攻破最下面的防线或飞机碰撞结束游戏，分数到达50会触发BOSS哦！！！";
+				op12.innerHTML="新版本更新介绍";
+				op13.innerHTML="1.优化游戏界面2.修改BOSS隐藏BUG3.增加宠物和等级4.增加暂停游戏按钮2019.5.27";
+				op11.style.cssText="color:red;margin-top:20px;";
+				op12.style.cssText="color:#7FFF00;margin-top:30px;";
+				op13.style.cssText="color:#6495ED;margin-top:30px;";
+				ooexplain.appendChild(oH1);
+				ooexplain.appendChild(op11);
+				ooexplain.appendChild(op12);
+				ooexplain.appendChild(op13);
+				//作者
+				var owriter=new Image();
+				owriter.src="http://b290.photo.store.qq.com/psb?/V10ndCH60icupA/CAJMpLZn.ByGsWsgw9bg1.BdReJ7zSMLjMOHEGdlUYw!/m/dCIBAAAAAAAAnull&bo=HALkAhwC5AIRBzA!&rf=photolist&t=5";
+				owriter.style.cssText="position:absolute;top:100px;left:1100px;width:180px;";
+				document.body.appendChild(owriter);
+				//优化日志
+				var  bignote=document.createElement("button");
+				bignote.innerHTML="往日优化日志";
+				bignote.style.cssText="color:#F08080;margin-top:30px;width:150px;height:50px;font-size:20px;";
+				ooexplain.appendChild(bignote);
+				bignote.onclick=function(){
+				alert("第一次更新日志：\n历经一周的开发，飞机大战终于与大家见面了，大家多多支持哈，作者QQ二维码在右侧\n版本：飞机大战V1.0-测试版\n2019.5.25\n第二次更新日志：\n 细心的玩家可能注意到，游戏版本从1.0--》1.1，同时升级到内测版，我们也做了比较大的更新：\n版本：飞机大战V1.1-内测版\n1.增加经验值和分数\n2.优化界面\n3.增加BOSS\n4.其他优化 \n2019.5.26");
+				};
+				var  pausebutton=document.createElement("button");
+				pausebutton.innerHTML="点击暂停游戏";
+				pausebutton.style.cssText="color:#F08080;margin-top:30px;width:150px;height:50px;font-size:20px;";
+				ooexplain.appendChild(pausebutton);
+				pausebutton.onclick=function(){
+				alert("");
+				};
+		},
+		
+			//初始化
+			init:function(){
+				this.score=0;
+				document.body.style.background="#000";//黑色背景
+				
+				var ooexplain=document.getElementById(ooexplain);
+				var ogamestore=document.getElementById(ogamestore);
+				var oDiv=document.createElement("div");//添加DIV  游戏边框
+					oDiv.style.cssText="width:350px;height:500px;border:10px solid #fff;margin:50px 400px;text-align:center;position:relative;overflow:hidden;";
+					document.body.appendChild(oDiv);
+					
+				var oH=document.createElement("h1");
+					oH.innerHTML="飞机大战V1.2-内测版";
+					oH.style.cssText="color:#fff;font-size:26px;font-weight:normal;padding-top:50px";
+					oDiv.appendChild(oH);
+			for(var i=0;i<4;i++){
+				var oP=document.createElement("p");
+				oP.index=i;
+				oP.style.cssText="font-size:14px;color:#000;width:150px;height:50px;margin:45px auto;text-align:center;background:#fff;line-height:40px;cursor:pointer";
+				var html="";
+				oP.onmouseenter=function(){
+						this.style.background="#F60";
+						this.style.color="#fff";
+				
+				};
+				oP.onmouseleave=function(){
+				    this.style.background="#fff";
+					this.style.color="#000";
+				
+				};
+				oP.onclick=function(e){
+					e=e||window.event;
+					Game.start(this.index,oDiv,e,ooexplain,ogamestore);
+				
+				};
+				switch(i)
+				{
+					case 0:
+					html="简单";
+					oP.style.fontWeight="bold";
+						break;
+					case 1:
+					html="中等";
+					oP.style.fontWeight="bold";
+						break;
+					case 2:
+					html="困难";
+					oP.style.fontWeight="bold";
+						break;
+					case 3:
+					html="牛逼";
+					oP.style.color="#f00";
+					oP.style.fontWeight="bold";
+					oP.onmouseleave=function(){
+						this.style.color="#f00";
+						this.style.background="#fff";
+					
+					
+					};
+				
+						break;
+				}
+				oP.innerHTML=html;
+				oDiv.appendChild(oP);
+			}
+			},
+			//游戏开始
+			start :function(index,oGameBox,e,ooexplain,ogamestore){
+			
+				oGameBox.innerHTML="";
+				var os=document.createElement("span");
+				os.innerHTML="本场得分："+this.score;
+				os.style.cssText="font-size:16px;position:absolute;left:20px;top:20px;color:#fff";
+				oGameBox.appendChild(os);
+				this.plane(oGameBox,e);
+				this.enemy(oGameBox,os,ooexplain,ogamestore);
+			
+			},
+			
+			//宠物界面+等级界面
+			pet:function(e,ogamestore,index,ogamestore){
+					if(index==2)  
+					{
+					
+					ogamestore.innerHTML="";
+					var oop=document.createElement("p");
+					oop.style.cssText="font-size:16px;position:absolute;left:20px;top:20px;color:red;";
+					oop.innerHTML="点击查看宠物详细信息";
+					ogamestore.appendChild(oop);
+					var oop1=document.createElement("p");
+					oop1.style.cssText="font-size:16px;position:absolute;left:40px;top:100px;color:red;";
+					oop1.innerHTML="点我携带";
+					ogamestore.appendChild(oop1);
+					var opet=new Image();
+					opet.src="http://a4.qpic.cn/psb?/V10ndCH63lyu3O/xSj2i5AVbnQnpWjKm7dVYSDpSduk0QnhBreypMq37Gc!/m/dFMBAAAAAAAAnull&bo=SQBKAAAAAAARBzM!&rf=photolist&t=5";
+					opet.style.cssText="width:75px;height:80px;margin:55px auto;";
+					ogamestore.appendChild(opet);
+					opet.onclick=function(){
+					alert("姓名：圣光天马\n经验宝宝，\n携带此宠物，\n升级（加经验）速度翻倍\n点击携带");
+					};
+					oop1.onclick=function(){
+					Game.pet1=1;
+					alert("携带成功");
+					};
+					}
+					else if(index==3)   
+					{
+					ogamestore.innerHTML="";
+					var ograde=document.createElement("div");
+						ograde.style.cssText="width:200px;height:400px;margin:55px auto;background:#fff;";
+						ogamestore.appendChild(ograde);
+					var oop=document.createElement("p");
+					Game.addgrade();
+						oop.innerHTML="LV:   "+Game.grade;
+						ograde.appendChild(oop);
+					
+						
+					}
+			
+			},
+			//关于飞机
+			plane :function(oGameBox,e){
+				
+				var x=e.pageX;
+				var y=e.pageX;
+				
+				var oplane=document.createElement("img");
+				oplane.src="http://a4.qpic.cn/psb?/V10ndCH63lyu3O/R7Z5FmYhK*qGZ2H33f1hnqv9RdBg0Zxe4ezahfg7Hdc!/m/dFMBAAAAAAAAnull&bo=ZABsAAAAAAARBzg!&rf=photolist&t=5";
+				oplane.width=60;
+				oplane.height=36;
+				oplane.id="plane";
+				var tY=oGameBox.offsetTop+parseInt(oGameBox.style.borderWidth)+oplane.height/2;
+				var lX=oGameBox.offsetLeft+oplane.width/2+parseInt(oGameBox.style.borderWidth);
+				window.onresize=function(){
+					 lX=oGameBox.offsetLeft+oplane.width/2+parseInt(oGameBox.style.borderWidth);
+				
+				};
+				var top=y-tY;
+				var left=x-lX;
+				oplane.style.cssText="display:block;position:absolute;top:"+top+"px;left:"+left+"px;";
+				oGameBox.appendChild(oplane);
+			
+				var leftMin=-oplane.width/2;
+				var leftMax=oGameBox.clientWidth-oplane.width/2;
+				var topMin=0;
+				var topMax=oGameBox.clientHeight-oplane.height;
+				
+				document.onmousemove=function(e){
+						e=e||window.event;
+						var left=e.pageX-lX;
+						var top=e.pageY-tY;
+						top=Math.min(top,topMax);
+						top=Math.max(top,topMin);
+						left=Math.min(left,leftMax);
+						left=Math.max(left,leftMin);
+						oplane.style.left=left+"px";
+						oplane.style.top=top+"px";
+						//添加宠物
+						if(Game.pet1==1)
+						{
+							var pet1=document.createElement("img");
+							pet1.src="http://a4.qpic.cn/psb?/V10ndCH63lyu3O/xSj2i5AVbnQnpWjKm7dVYSDpSduk0QnhBreypMq37Gc!/m/dFMBAAAAAAAA&ek=1&kp=1&pt=0&bo=SQBKAAAAAAARFyM!&tl=3&vuin=2268615925&tm=1558969200&sce=60-3-3&rf=0-0";
+							pet1.style.cssText="display:block;position:absolute;top:0px;left:280px;";
+							oGameBox.appendChild(pet1);
+						}
+				
+				};
+					this.biubiubiu(oplane,oGameBox);
+			},
+			//关于子弹
+			biubiubiu: function(oplane,oGameBox){
+				this.biutimer=setInterval(function(){
+				 var obiu=new Image();
+				 obiu.src="http://a3.qpic.cn/psb?/V10ndCH63lyu3O/oaQduMdxce8VqAjBsmZXate.bmLpewTIcN9m66nVtbo!/m/dL4AAAAAAAAAnull&bo=HQApAAAAAAADBxY!&rf=photolist&t=5";
+				 obiu.width=6;
+				 obiu.height=22;
+				 obiu.className="biubiubiu";
+				 var top=oplane.offsetTop-obiu.height;
+				 var left=oplane.offsetLeft-obiu.width/2+oplane.width/2;
+				 obiu.style.cssText="position:absolute;top:"+top+"px;left:"+left+"px";
+					oGameBox.appendChild(obiu);
+					obiu.timer=setInterval(function(){
+						obiu.style.top=obiu.offsetTop-15+"px";
+						if(obiu.offsetTop<-obiu.height)
+							{
+							  
+								clearInterval(obiu.timer);
+								obiu.parentNode.removeChild(obiu);
+							}
+						},15);
+						
+				},200);//子弹生成速度
+				
+			},
+			//敌军
+			
+			enemy: function(oGameBox,os,ooexplain,ogamestore){
+					this.enemytimer=setInterval(function(){
+						var oenemy=new Image();
+						oenemy.src="http://a3.qpic.cn/psb?/V10ndCH63lyu3O/XqIsbN1xAoq.0Uz7BexI6gkK8BfG.2zX5y9PCZvulRg!/m/dL4AAAAAAAAAnull&bo=7wCvAAAAAAADB2I!&rf=photolist&t=5";
+						oenemy.height=30;
+						oenemy.width=23;
+						var Lmin=0;
+						var Lmax=oGameBox.clientWidth-oenemy.width;
+						var left=Math.random()*(Lmax-Lmin)+Lmin;
+						oenemy.style.cssText="position:absolute;top:="+(-oenemy.height)+"px;left:"+left+"px";
+						oGameBox.appendChild(oenemy);
+						var a=Math.random()*3+1;
+						oenemy.timer=setInterval(function(){
+							oenemy.style.top=oenemy.offsetTop+a;
+							if(oenemy.offsetTop>=oGameBox.clientHeight)
+									{
+										clearInterval(oenemy.timer);
+										oenemy.parentNode.removeChild(oenemy);
+										Game.over(oGameBox);
+									}
+							
+						
+						},30);
+						//触发一级BOSS
+						
+								if(Game.score>=50&&Game.bossnum==0)
+									{
+										Game.bossnum=1;
+										var oBoss=new Image();
+										oBoss.src="http://a3.qpic.cn/psb?/V10ndCH63lyu3O/XqIsbN1xAoq.0Uz7BexI6gkK8BfG.2zX5y9PCZvulRg!/m/dL4AAAAAAAAAnull&bo=7wCvAAAAAAADB2I!&rf=photolist&t=5";
+										oBoss.height=60;
+										oBoss.width=46;
+										var Lmin=0;
+										var Lmax=oGameBox.clientWidth-oBoss.width;
+										var left=Math.random()*(Lmax-Lmin)+Lmin;
+										oBoss.style.cssText="position:absolute;top:="+(-oBoss.height)+"px;left:"+left+"px";
+										oGameBox.appendChild(oBoss);
+										var a=Math.random()*0.5+0.5;
+											oBoss.timer=setInterval(function(){
+											oBoss.style.top=oBoss.offsetTop+a;
+											if(oBoss.offsetTop>=oGameBox.clientHeight)
+											{
+													clearInterval(oBoss.timer);
+													oBoss.parentNode.removeChild(oBoss);
+													Game.over(oGameBox);
+											}
+											},23);
+							
+								}
+						//和子弹的碰撞检测
+						var allbiu=Game.Getclass("biubiubiu");
+						//var blength=allbiu.length;
+							oenemy.pzTimer=setInterval(function(){
+							for(var i=0;i<allbiu.length;i++)
+								if(Game.boom(oenemy,allbiu[i]))
+								{
+								Game.score++;
+								if(Game.pet1==1)
+									Game.experience+=2;
+								else 
+									Game.experience++;
+								os.innerHTML="本场得分："+Game.score;
+									oenemy.src="http://a3.qpic.cn/psb?/V10ndCH63lyu3O/Fni69oUqHCIQ3xQ7dyuWQygLUFIesf1wCzJ2c1EvbCA!/m/dL4AAAAAAAAAnull&bo=VABKAAAAAAADBzw!&rf=photolist&t=5";
+									clearInterval(oenemy.pzplane);
+									clearInterval(oenemy.pzTimer);
+								setTimeout(function(){
+									if(oenemy.parentNode)
+									{
+									  
+										oenemy.parentNode.removeChild(oenemy);
+								    }
+								},300);
+								}
+							
+								
+							},50);
+			
+						//和战机的碰撞检测
+			var oplane=document.getElementById("plane");
+			oenemy.pzplane=setInterval(function(){
+			
+			if(Game.boom(oenemy,oplane)||Game.boom(oBoss,oplane))
+				{
+					clearInterval(oenemy.pzplane);
+					clearInterval(Game.biutimer);
+					clearInterval(Game.enemytimer);
+					oenemy.src="http://a3.qpic.cn/psb?/V10ndCH63lyu3O/Fni69oUqHCIQ3xQ7dyuWQygLUFIesf1wCzJ2c1EvbCA!/m/dL4AAAAAAAAAnull&bo=VABKAAAAAAADBzw!&rf=photolist&t=5";
+					oplane.src="http://a4.qpic.cn/psb?/V10ndCH63lyu3O/eURepNRponIsvICcbUAyfWb3l9YRayZmo.EtWD5Umfk!/m/dL8AAAAAAAAAnull&bo=oABwAAAAAAARB.A!&rf=photolist&t=5";
+				setTimeout(function(){
+				
+					Game.over(oGameBox,ooexplain,ogamestore);
+					},300);
+				
+				 }		
+				},50);
+						
+						
+						
+				},500)//敌军生成速度
+			
+			
+			
+			},
+			
+			
+			
+			
+			
+			
+			//碰撞检测
+			
+			boom :function(obj1,obj2){
+				var T1=obj1.offsetTop;
+				var B1=obj1.clientHeight+T1;
+				var L1=obj1.offsetLeft;
+				var R1=L1+obj1.clientWidth;
+				
+				var T2=obj2.offsetTop;
+				var B2=obj2.clientHeight+T2;
+				var L2=obj2.offsetLeft;
+				var R2=L2+obj2.clientWidth;
+				if(R2<L1 || L2>R1 || B2<T1 || T2>B1)
+					{
+						return false;//没撞上
+					}
+					else 
+					{
+						return true;//撞上了
+					}
+			
+			},
+			//游戏结束
+			over:function(oGameBox,ooexplain,ogamestore){
+				oGameBox.innerHTML="";
+				var odiv=document.createElement("div");
+				odiv.style.cssText="width:200px;height:400px;margin:75px;background:#fff;";
+				var oT=document.createElement("h3");
+					oT.innerHTML="Game Over";
+					oT.style.cssText="padding-top:50px;";
+					
+						
+				var oP1=document.createElement("p");
+				var oP2=document.createElement("p");
+				oP1.innerHTML="您的得分是："+"<span>"+ this.score+ "</span>" ;
+				oP1.style.cssText="font-size:16px;color:  #000000";
+				oP2.innerHTML="当前经验值："+"<span>"+ this.experience+ "</span>" ;
+				oP2.style.cssText="font-size:16px;color:  #000000";
+				var orestart=document.createElement("div");
+				orestart.style.cssText=
+				"width:100px;height:40px;font-size:14px;text-align:center:line-height:40px;color:#f00;background:#990;margin:20px auto;cursor:pointer;padding-top:25px;";
+				orestart.innerHTML="重新开始";
+		
+				orestart.onclick=function(){
+						//window.location.reload();//刷新当前页面
+						var ogamestore=document.getElementById("ogamestore");
+						ogamestore.parentNode.removeChild(ogamestore);
+						oGameBox.parentNode.removeChild(oGameBox);
+						//ooexplain.parentNode.removeChild(ooexplain);
+						Game.exe();
+					
+				};
+				odiv.appendChild(oT);
+				odiv.appendChild(oP1);
+				odiv.appendChild(oP2);
+				odiv.appendChild(orestart);
+				oGameBox.appendChild(odiv);
+			},
+			//升级函数
+			addgrade:function(){
+			
+				if(Game.experience>=10&&Game.experience<=30)
+					Game.grade=1;
+				if(Game.experience>=31&&Game.experience<=50)
+					Game.grade=2;
+				if(Game.experience>=51&&Game.experience<=99)
+					Game.grade=3;
+				if(Game.experience>=100)
+					Game.grade=4;
+				
+			
+			},
+			//getclass
+			Getclass :function(cName,parent){
+				parent=parent||document;
+			if(document.getElementsByClassName)
+				{
+				return parent.getElementsByClassName(cName);
+				}
+			else {
+			
+			var all=parent.getElementsByTagName("*");
+			var arr=[];
+			for (var j=0;j<all.length;j++)
+			{
+			 var arrClass=all.className.split(" ");
+				for(var i=0;i<arrClass.length;i++)
+					{
+						if(arrClass[i]==cName)
+							{
+								arr.push(all[j]);
+								break;
+							}
+					}
+			
+			}
+			return arr;
+			}
+			},
+			
+		};
+	</script>
 </body>
 </html>
