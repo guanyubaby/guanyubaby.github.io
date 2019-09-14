@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>注册我的一二账号</title>
+
+</head>
+<body>
+    <style>
+        body{background-image:url(http://b159.photo.store.qq.com/psb?/V10ndCH60icupA/9gWcUsejOI19pGuTb2CDa.mYzSG7i6lz5XBDrPnT4Mo!/c/dJ8AAAAAAAAA&bo=gAc4BIAHOAQRECc!&rf=mood_app);}
+        #td-progress {
+            width:20%;
+            float:right;
+            height: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        #td-progress-bar {
+            float: left;
+            width: 0;
+            height: 100%;
+            font-size: 16px;
+            line-height: 20px;
+            color: #00BFFF;
+            text-align: center;
+            background-color: #FFFF00;
+        }
+        .eat12:hover{
+           transform: scale(1.2);
+        }
+    </style>
+<form action="http://localhost/index/index.php" method="post">
+    名字: <input type="text" name="fname">
+    年龄: <input type="text" name="age">
+    <input type="submit" value="提交" >
+
+</form>
+    <div id="td-progress">
+        <div id="td-progress-bar"  aria-valuenow="40"
+             aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+            <span id="a">饥饿度40%</span>
+        </div>
+
+    </div>
+    <img  class="eat12" width="15%" ; style="position:absolute; left:1100px; top:100px; "src="https://wx1.sinaimg.cn/mw690/9c5f0022gy1g2toc061q8j215o15odnc.jpg"/>
+    <img  onclick="fillhunger()"; class="eat12" width="7%" ; style="position:absolute; left:1100px; top:330px; "src="http://a4.qpic.cn/psb?/V10ndCH63lyu3O/*chSPV*I7B*UZI1gjQRTRlRyy5fbFm6OzmAFSjtQrlE!/m/dL8AAAAAAAAAnull&bo=pQCCAAAAAAADBwU!&rf=photolist&t=5"/>
+    <img  onclick="fillhunger()"; class="eat12" width="7%" ; style="position:absolute; left:1250px; top:330px; "src="http://a1.qpic.cn/psb?/V10ndCH63lyu3O/jBgUlp1LR7cuc*OaDZZjUWyMQcyxs5tYCZMz2SoHKcY!/m/dLgAAAAAAAAAnull&bo=pQCCAAAAAAADBwU!&rf=photolist&t=5"/>
+    <script>
+        var x=40;
+        function fillhunger()
+        {
+            if(x<=80)
+                 x+=20;
+            document.getElementById("td-progress-bar").style.width = x+"%";
+            document.getElementById("a").innerHTML = "饥饿度"+x+"%";
+        }
+
+    </script>
+</body>
+</html>
