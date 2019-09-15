@@ -8,12 +8,28 @@
 		width: 100%;
 		height: 100%;
 		}
-         .time1
-         {
-           width:100%; height:50px; background:#FFF000; line-height:50px; text-align:center;
-           color:green;
-         }
-
+        .avatar{
+				height:80px;
+				width:80px;
+				margin-top:-150px;
+				margin-left:1200px;
+				border-radius: 100px;
+		}
+		.avatartext{
+				
+				width:180px;
+				margin-top:-100px;
+				margin-left:1300px;
+				border-radius: 100px;
+		}
+		.avatartext-zhuce{
+				
+				width:180px;
+				margin-top:0px;
+				margin-left:1300px;
+				border-radius: 100px;
+		}
+	
   </style>
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -21,11 +37,15 @@
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="jumbotron text-left"  style="margin-bottom:0 ;height:150px;margin-top: -50px" >
+<div class="jumbotron text-left"  style="margin-bottom:0 ;height:150px;margin-top: -50px ;background-color:#F5ECCE" >
   <h1 >徐冠宇</h1>
 
   <p style="margin-top: -10px">欢迎访问我的主页！</p>
 
+ 
+<img class="avatar" title="这是可爱的小一二" src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=a83082fca7014c080d3620f76b12696d/d4628535e5dde711d1fb4ca3a9efce1b9d1661bd.jpg"/>
+<p class="avatartext">昵称：神谕天尊</p>
+<a class="avatartext-zhuce" href="index/注册/注册账号.html">没有账号？注册一个</a>
 
 </div>
 	<nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -102,6 +122,7 @@
       <div class="container" style="margin-top:30px">
         <div class="row">
           <div class="col-sm-4">
+		  
             <h2>理论成果</h2>
             <h5>量子物理</h5>
             <div class="fakeimg">化学生物</div>
@@ -123,19 +144,79 @@
               </li>
             </ul>
             <hr class="d-sm-none">
+			<div class="card img-fluid" style="width:500px">
+			<img class="card-img-top" src="https://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="width:100%">
+			<div class="card-img-overlay">
+			  <h4 class="card-title">John Doe</h4>
+			  <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+			  <a href="#" class="btn btn-primary">See Profile</a>
+			</div>
+		  </div>
           </div>
-          <div class="col-sm-6">
+		  
+          <div class="col-sm-5">
             <h2>应用开发</h2>
             <h5>知识获取</h5>
             <div class="fakeimg">理论</div>
             <p>项目展示</p>
             <p>8月12-16日，温州市平阳县新时代文明实践培训班在我校举办。温州平阳县精神文明建设指导中心副主任陈强，济南大学党委宣传部、政法学院相关负责人，平阳县辖区60位政府及企事业单位负责人参加了开班仪式。培训班开班仪式由济南大学公共管理培训中心办公室主任刘钟华主持。</p>
             <br>
-            <h2>标题</h2>
-            <p>8月12-16日，温州市平阳县新时代文明实践培训班在我校举办。温州平阳县精神文明建设指导中心副主任陈强，济南大学党委宣传部、政法学院相关负责人，平阳县辖区60位政府及企事业单位负责人参加了开班仪式。培训班开班仪式由济南大学公共管理培训中心办公室主任刘钟华主持。</p>
+			
+			 <!-- ----------------------------------------------------表格 -------------------------------------------------------------->
+			  <table class="table table-hover">
+						<thead>
+						  <tr>
+							<th>本周计划</th>
+							<th>活动</th>
+							<th>预算</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr class="table-primary">
+							<td >周一</td>
+							<td>学PHP</td>
+							<td>￥3</td>
+						  </tr>
+						  <tr>
+							<td>周二</td>
+							<td>打排球</td>
+							<td>550RMB</td>
+						  </tr>
+						  <tr class="table-success">
+							<td>周日</td>
+							<td>钓鱼</td>
+							<td>九万</td>
+						  </tr>
+						   <tr>
+							<td>周日</td>
+							<td>钓鱼</td>
+							<td>九万</td>
+						  </tr>
+						   <tr>
+							<td class="table-danger">周日</td>
+							<td>钓鱼</td>
+							<td>九万</td>
+						  </tr>
+						</tbody>
+						
+				</table>
+				 <ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item active"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					<li class="page-item"><a class="page-link" href="#">6</a></li>
+					<li class="page-item"><a class="page-link" href="#">7</a></li>
+					<li class="page-item"><a class="page-link" href="#">8</a></li>
+					<li class="page-item"><a class="page-link" href="#">...</a></li>
+					<li class="page-item"><a class="page-link" href="#">...</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				  </ul>
           </div>
           <!-- ----------------------------------------------------九万字 -------------------------------------------------------------->
-          <div class="col-sm-2">
+          <div class="col-sm-3">
             <h6 class="text-muted">有谁不是 </h6>
             <h6 class="text-primary">少年热诚</p>
               <h6 class="text-success">孑然一身 </h6>
@@ -144,15 +225,71 @@
               <h6 class="text-danger">从来酿酒的人</h6>
               <h6 class="text-secondary">分外清醒</h6>
               <h6 class="text-success">独善其身</h6>
+			<!-- ----------------------------------------------------九万字下面的卡片 -------------------------------------------------------------->
+				<div class="card">
+					<div class="card-body">
+					  <h4 class="card-title">《深夜一角》🎵</h4>
+					  <p class="card-text">陌生的房子，陌生的地址，收留了疲惫的人和他的心事</p>
+					  <a href="#" class="card-link">By--毛不易</a>
+					  <a href="#" class="card-link">明日之子</a>
+					</div>
+				</div>
           </div >
+		 
         </div>
       </div>
+	
     <!-- ----------------------------------------------------结束语 ----------------------------->
+ <!--	动画进度条--> 
+  <div class="progress ">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%"></div>
+  </div>
 
-
-    <div class="jumbotron text-center"  style="margin-bottom:0 ;height:150px;margin-top: 0px" >
-      <h1 >底部内容</h1>
-
-      <p style="margin-top: -10px">欢迎访问我的主页！</p>
+    <div class="jumbotron text-center"  style="margin-bottom:0 ;height:auto;margin-top: 0px ;background-color:#F5ECCE" >
+      <table class="table">
+    <thead>
+      <tr>
+        <th>学校概况</th>
+        <th>教育教学</th>
+        <th>科学研究</th>
+		<th>合作交流</th>
+        <th>招生就业</th>
+		
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>学校简介</td>
+        <td>学校领导</td>
+        <td>组织机构</td>
+		<td>校园生活</td>
+        <td>校园风光</td>
+      </tr>
+	  <tr>
+        <td>学校简介</td>
+        <td>学校领导</td>
+        <td>组织机构</td>
+		<td>校园生活</td>
+        <td>校园风光</td>
+      </tr>
+	  <tr>
+        <td>学校简介</td>
+        <td>学校领导</td>
+        <td>j组织机构</td>
+		<td>校园生活</td>
+        <td>校园风光</td>
+      </tr>
+	  <tr>
+        <td>学校简介</td>
+        <td>学校领导</td>
+        <td>j组织机构</td>
+		<td>校园生活</td>
+        <td>校园风光</td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+  </div>
   </body>
   </html>
