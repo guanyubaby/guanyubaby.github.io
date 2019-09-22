@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="Login.css"/>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>html{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+        font-family: 'Open Sans',sans-serif;
+        margin: 0;
+        background-color: #4A374A;
+    }
+    #login{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        margin: -150px 0 0 -150px;
+        width: 300px;
+        height: 300px;
+    }
+    #login h1{
+        color: #fff;
+        text-shadow:0 0 10px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    h1{
+        font-size: 2em;
+        margin: 0.67em 0;
+    }
+    input{
+        width: 278px;
+        height: 18px;
+        margin-bottom: 10px;
+        outline: none;
+        padding: 10px;
+        font-size: 13px;
+        color: #fff;
+        text-shadow:1px 1px 1px;
+        border-top: 1px solid #312E3D;
+        border-left: 1px solid #312E3D;
+        border-right: 1px solid #312E3D;
+        border-bottom: 1px solid #56536A;
+        border-radius: 4px;
+        background-color: #2D2D3F;
+    }
+    .but-submit{
+        width: 120px;
+        min-height: 22px;
+        display: block;
+        background-color: #4a77d4;
+        border: 1px solid #3762bc;
+        color: #fff;
+        padding: 9px 14px;
+        font-size: 12px;
+        position: absolute;
+        margin-top: -50px;
+        margin-left: 320px;
+    }
+    .but-submit1{
+        width: 120px;
+        min-height: 22px;
+        display: block;
+        background-color: #4a77d4;
+        border: 1px solid #3762bc;
+        color: #fff;
+        padding: 9px 14px;
+        font-size: 12px;
+        position: absolute;
+        margin-top: -50px;
+        margin-left: 320px;
+    }
+    .but{
+        width: 300px;
+        min-height: 20px;
+        display: block;
+        background-color: #4a77d4;
+        border: 1px solid #3762bc;
+        color: #fff;
+        padding: 9px 14px;
+        font-size: 15px;
+        line-height: normal;
+        border-radius: 5px;
+        margin: 0;
+    }
+    /*有账号注册一个的样式*/
+    .follow{
+        position: absolute;
+        margin-left: 300px;
+        margin-top: -60px;
+        width:200px;
+    }
+    </style>
+    <script>
+        var  texttime=60;//初始化倒计时时间
+        function showHint(str)
+        {
+            var xmlhttp;
+            if (str.length==0)
+            {
+                document.getElementById("txtHint").innerHTML="";
+                return;
+            }
+            if (window.XMLHttpRequest)
+            {
+                // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET","/demo/index.php?q="+str,true);
+            xmlhttp.send();
+        }
+        function shifttext()//改变验证码函数
+        {
+            var i=Math.floor(Math.random()*10);
+            var j=Math.floor(Math.random()*10);
+            var m=Math.floor(Math.random()*10);
+            var n=Math.floor(Math.random()*10);
+            var yanzhengma=document.getElementById("yanzhengma");
+            var yanzheng=['A','b','C','3','0','O','9','1','m','M'];
+
+            var newyanzhengma=yanzheng[i]+yanzheng[j]+yanzheng[m]+yanzheng[n];//共有n的四次方种排列组合
+            //for(i=0;i<yanzheng.length;i++)
+
+            yanzhengma.innerHTML=newyanzhengma;
+
+        }
+        function set()//改变计时器函数
+        {
+            if(texttime==60)
+                gotime();
+            if(texttime==0)
+            {
+                texttime=60;
+                gotime();
+            }
+        }
+        function gotime()
+        {
+
+            if(texttime>=1){
+                var starttime=document.getElementById("starttime");
+                starttime.innerHTML=texttime;
+                texttime--;
+                starttime.innerHTML="已发送"+texttime;
+                t=setTimeout("gotime()",1000);
+            };
+            if(texttime==0)
+            {
+                var starttime=document.getElementById("starttime");
+                starttime.innerHTML="点击重新发送";
+
+            }
+        }
+
+
+        //提交json数据
+        function social()
+        {
+            //获取提交数据
+            var username=document.getElementById('username').value;
+            var password=document.getElementById('password').value;
+            $.ajax({
+                type: "GET",
+                url: "register-add.php",
+                data:{"username":username,"password":password},
+                success:function (message) {
+                    alert("提交成功");
+                },
+                error:function (message) {
+                    alert("提交失败");
+                }
+            });
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="login">
+    <h1>Register</h1>
+    <form method="get"  action="register-add.php">
+        <input id="username" type="text" required="required" placeholder="用户名" name="username" onkeyup="showHint(this.value)"></input>
+        <input id ="password" type="password" required="required" placeholder="密码" name="password"></input>
+        <input type="password" required="required" placeholder="再次确认密码" ></input>
+        <input type="text" required="required" placeholder="手机号" ></input>        <button  id="starttime" onclick="set()" class="but-submit" type="submit">点击发送验证码</button>
+        <input type="text" required="required" placeholder="请输入验证码" ></input>   <button  onclick="shifttext()" id="yanzhengma" class="but-submit1" type="submit">点击获取识别码</button>
+        <br/><br/>
+        <button class="but"  onclick="social()" type="button">注册</button>
+        <a class="follow" href="index-login.html">已经有帐号了？赶紧登录-></a>
+        <!--<p>提示信息: <span id="txtHint"></span></p>-->
+    </form>
+</div>
+</body>
+</html>
