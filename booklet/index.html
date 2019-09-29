@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>留言小册子</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+             <!--bootsrap--->
+        <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <!--jquery--->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+
+        function showUser(index=0) {
+            //设置默认参数index，如果无参数，则查询所给条件要求，若有参数，则代表函数嵌套，显示全部
+            if(index==0)
+            {
+                var str=document.getElementById("username").value;
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function() {
+                    if (this.readyState==4 && this.status==200) {
+                        document.getElementById("textInt").innerHTML=this.responseText;
+                        // alert("pi");
+                    }
+                };
+                xmlhttp.open("GET","/booklet/getuser.php?q="+str,true);
+                xmlhttp.send();
+            }
+            else {
+                var str='';
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function() {
+                    if (this.readyState==4 && this.status==200) {
+                        document.getElementById("textInt").innerHTML=this.responseText;
+                        // alert("pi");
+                    }
+                };
+                xmlhttp.open("GET","/booklet/getuser.php?q="+str,true);
+                xmlhttp.send();
+
+            }
+
+        }
+
+
+    </script>
+</head>
+<body onload="  showUser(1)">
+
+            <p>非常感谢您的精彩留言：</p>
+            <textarea  rows="4" cols="50"  placeholder="请输入你的建议" id="useradvice"></textarea>
+            您的姓名：<input type="text" id="username" />
+            <button type="button" class="btn btn-success" id="add">增</button>
+            <button type="button" class="btn btn-info" id="delete">删</button>
+            <button type="button" class="btn btn-warning" id="update">改</button>
+            <button type="button" class="btn btn-danger" id="read" onclick="showUser()">查</button>
+    <!----------------------------------------------------------------------------------------------------------------->
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                    <h4 class="modal-title" id="myModalLabel">修改数据</h4>
+                </div>
+                <div class="modal-body">你要修改的信息为上方数据</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">知道了</button>
+<!--                    <button type="button" class="btn btn-primary">确定</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <script>
+        $(function () { $('#myModal').modal('hide)});
+    </script>
+    <script>
+        $(function () { $('#myModal').on('hide.bs.modal', function () {
+            //alert('嘿，我听说您想再重新输入一次...');})
+        });
+
+    </script>
+    <!----------------------------------------------------------------------------------------------------------------->
+<script>
+    var magicnumber=1;
+    function showid(id,adviceid,passwordid)
+    {
+
+        //id其实就是index的值
+        //alert(id);
+        var username=document.getElementById(id).innerHTML;
+      // alert(username);
+        var advice=document.getElementById(adviceid).innerHTML;
+        //alert(adviceid);
+         var password=document.getElementById(passwordid).innerHTML;
+       //alert(passwordid);
+        $.ajax({
+            url:"http://localhost/booklet/solodeleteuser.php", //要处理的页面
+            data:{deletename:username,deleteadvice:advice,deletepassword:password},  //要传过去的数据
+            type:"GET",  //提交方式
+            dataType:"TEXT", //返回的数据类型，TEXT字符串 JSON返回JSON XML返回XML；dataType中T要大写！！
+            success: function(){ //回调函数，data为形参，是从login-cl.php页面返回的值
+
+                showUser(1);
+
+            },
+        });
+    };
+    //--------------------------------------------------------------------------------
+    function updateid(id,adviceid,passwordid)
+    {
+
+        //id其实就是index的值
+       // alert(id);
+        var username=document.getElementById(id).innerHTML;
+       //  alert(username);
+        var advice=document.getElementById(adviceid).value;//提取修改的内容
+       // alert(advice);
+        var password=document.getElementById(passwordid).innerHTML;
+       // alert("pi");
+       //  alert(password);
+        $.ajax({
+            url:"http://localhost/booklet/updateuser.php", //要处理的页面
+            data:{updatename:username,updateadvice:advice,updatepassword:password},  //要传过去的数据
+            type:"GET",  //提交方式
+            dataType:"TEXT", //返回的数据类型，TEXT字符串 JSON返回JSON XML返回XML；dataType中T要大写！！
+            success: function(){ //回调函数，data为形参，是从login-cl.php页面返回的值
+
+               showUser(1);//操作完成立刻执行刷新
+
+            },
+        });
+    };
+
+
+    //-------------------------------------将文字变为文本框-------------------------------------------
+    function shifttext(id,adviceid,passwordid)
+    {
+
+       // alert(updateid);
+        var advice=document.getElementById(adviceid);//要修改的位置（id）
+        var advicetext=document.getElementById(adviceid).innerHTML;//提取原来的内容
+
+
+           /* var input = document.createElement("input" );
+            input.id=adviceid;
+            advice.appendChild(input);
+*/
+
+
+
+     //  advice.innerHTML="<td><input  id=adviceid  ></td>";//生成一个文本框
+        var alertname=advicetext;
+
+        alertname=prompt('请输入要修改的信息',advicetext);
+
+         if(alertname==null)
+         {
+             document.getElementById(adviceid).value=advicetext;//将内容提取出来，再将内容赋给文本框,因为点击取消得到的值为空，还不如用初始值
+             document.getElementById("myModalLabel").value=advicetext;//传递给模态框的值
+         }
+
+
+
+        else
+    {
+        document.getElementById(adviceid).value=alertname;//将内容提取出来，再将内容赋给文本框*/
+        document.getElementById("myModalLabel").innerHTML=alertname;//传递给模态框的值
+    }
+
+      // alert(id);
+        //document.getElementById(adviceid).value="小笨猪";//将内容提取出来，添加文本框，再将内容赋给文本框
+
+        updateid(id,adviceid,passwordid);//明明是修改了id为adviceid的值，但是却没有修改，令人头大
+    };
+
+    //--------------------------------------------------------------------------------
+    $("#add").click(function(){
+        var uername = $("#username").val();
+        var useradvice = $("#useradvice").val();
+
+        $.ajax({
+            url:"http://localhost/booklet/adduser.php", //要处理的页面
+            data:{name:uername,advice:useradvice,password:magicnumber},  //要传过去的数据
+            type:"GET",  //提交方式
+            dataType:"TEXT", //返回的数据类型，TEXT字符串 JSON返回JSON XML返回XML；dataType中T要大写！
+            success: function(data){ //回调函数，data为形参，是从login-cl.php页面返回的值
+
+               showUser(1);//操作完成立刻执行刷新
+
+           },
+        });
+        magicnumber++;
+    })
+    //-----------------------------------------------------------------------------------
+    $("#delete").click(function(){
+        var deletename = $("#username").val();
+
+        $.ajax({
+            url:"http://localhost/booklet/deleteuser.php", //要处理的页面
+            data:{deletename:deletename},  //要传过去的数据
+            type:"GET",  //提交方式
+            dataType:"TEXT", //返回的数据类型，TEXT字符串 JSON返回JSON XML返回XML；dataType中T要大写！！
+            success: function(){ //回调函数，data为形参，是从login-cl.php页面返回的值
+
+                showUser(1);//操作完成立刻执行刷新
+
+            },
+        });
+
+    })
+    //-----------------------------------------------------------------------------------
+    $("#update").click(function(){
+        var updatename = $("#username").val();
+        var updateadvice= $("#useradvice").val();
+
+        $.ajax({
+            url:"http://localhost/booklet/allupdateuser.php", //要处理的页面
+            data:{updatename:updatename,updateadvice:updateadvice},  //要传过去的数据
+            type:"GET",  //提交方式
+            dataType:"TEXT", //返回的数据类型，TEXT字符串 JSON返回JSON XML返回XML；dataType中T要大写！！
+            success: function(){ //回调函数，data为形参，是从login-cl.php页面返回的值
+                showUser(1);//操作完成立刻执行刷新
+
+            },
+
+        });
+    });
+   /* //--------------------------展示模态框的函数-----------------------------------
+    function show_modal() {
+        $('#myModal').modal('show');
+    }
+    $(function () {
+        $('#id_ad_search').click(function () {
+            var name = $('#id_name').val();
+            $.ajax({
+                url:'/test',
+                data:{name:name},
+                complete:function () {
+                    $('#myModal').modal('hide');
+                }
+            })
+
+        });
+
+    });*/
+    //-----------------------------------------------------------------------------------
+</script>
+
+
+
+      <text id="textInt">点击查询信息</text>
+
+</body>
+</html>
