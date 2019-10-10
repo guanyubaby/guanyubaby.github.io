@@ -5,7 +5,12 @@
 <title>一二搜索</title>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+ <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="icon" href="https://i.loli.net/2019/09/24/qSfhNkmEgiZcJBt.jpg" >
+ <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+ <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
+ /*输入框的样式*/
 #input1
 {
 		positon:absolute;
@@ -17,47 +22,91 @@
 
 
 }
+/*搜索框的样式*/
 #search{
     position: absolute;
     margin-left: 30%;
 }
+/*小手样式*/
 #btn
 {
-    margin-left: -80px;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: -70px;
     height: 80px;
-    width: 200px;
+    width: 10px;
 
 }
-
+/*快捷超链接的样式*/
+#container
+{
+ width:200px;
+}
+/*选择搜索引擎的样式*/
+#choose
+{
+ position: absolute;
+ margin-left:880px;
+ margin-top: -240px;
+}
 </style>
 </head>
 
 <body style="background-image:url(https://i.loli.net/2019/09/16/nZCmEYR6zAk2Puh.jpg)">
 
-<h1>开始你的新世界</h1>
+<h1>Hello World</h1>
 <div id="search">
-<input id="input1"> <i id="btn" class="fa fa-hand-o-right" style="font-size:48px;color:red"></i>
+<input id="input1" placeholder="开始神奇搜索之旅"> <a id="btn" class="fa fa-hand-o-right" style="font-size:48px;color:red"></a>
 </div>
-<a  href="https://www.runoob.com/" target="_blank">菜鸟教程</a>
+<!--选择快捷超链接-->
+<div id="container">
+<ul class="list-group">
+ <a  href="https://www.runoob.com/"  target="_blank" class="list-group-item list-group-item-success">菜鸟教程</a>
+ <a  href="https://mail.qq.com"      target="_blank" class="list-group-item list-group-item-secondary">QQ邮箱</a>
+ <a  href="http://jwgl3.ujn.edu.cn"  target="_blank" class="list-group-item list-group-item-info">教务系统</a>
+ <a  href=" https://one.ujn.edu.cn"  target="_blank" class="list-group-item list-group-item-warning">智慧济大</a>
+ <a  href=" https://xuguanyu.xyz"    target="_blank" class="list-group-item list-group-item-danger">冠宇主页</a>
+ <a  href=" https://sm.ms"           target="_blank" class="list-group-item list-group-item-primary">我的图床</a>
+ <!--<li class="list-group-item list-group-item-dark">深灰色列表项</li>
+ <li class="list-group-item list-group-item-light">浅色列表项</li>-->
 
+</ul>
+</div>
+<!--选择搜索引擎框-->
+<div id="choose">
+ <select id="choosedomin"  name="cars" class="custom-select-sm">
+  <option selected="selected" value="Bing">Bing</option>
+  <option  value="Baidu">Baidu</option>
+
+ </select>
+</div>
 <script>
 
 var button=document.getElementById("btn");
 		//一二可爱搜索点击搜索按钮触发事件
 	button.onclick = function()
 		{
-			var text=document.getElementById("input1").value;
-			window.open('https://cn.bing.com/search?q='+text);
-		};
-		//input回车触发事件
-            $('#input1').bind('keypress', function (event) {
-                if (event.keyCode == "13") {
-                    var text = document.getElementById("input1").value;
-                    //被注释掉的语句是原窗口打开，下一句新页面打开
-                    //location.href='https://cn.bing.com/search?q='+text;
-                    window.open('https://cn.bing.com/search?q=' + text);
-                }
-            });
+		    var selectvalue=document.getElementById("choosedomin").value;
+            var text=document.getElementById("input1").value;
+		    if(selectvalue=="Bing")
+             window.open('https://cn.bing.com/search?q='+text);
+            if(selectvalue=="Baidu")
+             window.open(' https://www.baidu.com/s?wd='+text);
+      };
+    //input回车触发事件
+        $('#input1').bind('keypress', function (event) {
+            if (event.keyCode == "13") {
+                var selectvalue=document.getElementById("choosedomin").value;
+                var text = document.getElementById("input1").value;
+                //被注释掉的语句是原窗口打开，下一句新页面打开
+                //location.href='https://cn.bing.com/search?q='+text;
+             if(selectvalue=="Bing")
+                window.open('https://cn.bing.com/search?q=' + text);
+             if(selectvalue=="Baidu")
+              window.open(' https://www.baidu.com/s?wd='+text);
+
+            }
+        });
 
 
 
