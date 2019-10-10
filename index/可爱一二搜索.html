@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>一二搜索</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+<style>
+#input1
+{
+		positon:absolute;
+
+		margin-left: 500px
+		width:300px;
+		height:100px;
+		font-size: 36px;
+
+
+}
+#search{
+    position: absolute;
+    margin-left: 30%;
+}
+#btn
+{
+    margin-left: -80px;
+    height: 80px;
+    width: 200px;
+
+}
+
+</style>
+</head>
+
+<body style="background-image:url(https://i.loli.net/2019/09/16/nZCmEYR6zAk2Puh.jpg)">
+
+<h1>开始你的新世界</h1>
+<div id="search">
+<input id="input1"> <i id="btn" class="fa fa-hand-o-right" style="font-size:48px;color:red"></i>
+</div>
+<a  href="https://www.runoob.com/" target="_blank">菜鸟教程</a>
+
+<script>
+
+var button=document.getElementById("btn");
+		//一二可爱搜索点击搜索按钮触发事件
+	button.onclick = function()
+		{
+			var text=document.getElementById("input1").value;
+			window.open('https://cn.bing.com/search?q='+text);
+		};
+		//input回车触发事件
+            $('#input1').bind('keypress', function (event) {
+                if (event.keyCode == "13") {
+                    var text = document.getElementById("input1").value;
+                    //被注释掉的语句是原窗口打开，下一句新页面打开
+                    //location.href='https://cn.bing.com/search?q='+text;
+                    window.open('https://cn.bing.com/search?q=' + text);
+                }
+            });
+
+
+
+
+
+
+</script>
+</body>
+</html>
