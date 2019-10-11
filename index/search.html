@@ -103,11 +103,18 @@ var button=document.getElementById("btn");
              if(selectvalue=="Bing")
                 window.open('https://cn.bing.com/search?q=' + text);
              if(selectvalue=="Baidu")
+
+
+
               window.open(' https://www.baidu.com/s?wd='+text);
 
             }
         });
+        var input1=document.getElementById("input1");
+        input1.onclick=function () {
+            input1.value="";
 
+        };
 
 
 
