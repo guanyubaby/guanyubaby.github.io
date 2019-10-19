@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--    增加网页图标-->
+    <link rel="icon" href="https://i.loli.net/2019/09/24/qSfhNkmEgiZcJBt.jpg" >
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <title>徐冠宇的个人简介</title>
+    <style>
+        /*页脚样式*/
+        #foot{
+            position: absolute;
+            margin-top: 700px;
+            width: 100%;
+            background-color: cornflowerblue;
+            font-size: 17px;
+            font-family: "Cambria Math";
+        }
+        /*头部样式*/
+        #head{
+            background-color: darksalmon;
+            text-align: center;
+            font-family: "Cambria Math";
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #content{
+            height:700px;
+        }
+        /*特效按钮*/
+        #effect{
+            position: absolute;
+            margin-left: 40%;
+            margin-top: -2%;
+        }
+        #head12{
+            border-radius: 1110px;
+            height: 80px;
+            width: 80px;
+
+        }
+        /*手风琴隐藏*/
+        #accordion{
+            position: absolute;
+            margin-left: 50%;
+            margin-top: -28%;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header" id="head"><p>徐冠宇简历</p><input type="submit" class="btn btn-info" id="effect" value="关闭特效"> </div>
+        <div class="card-body" id="content">
+
+            <!-- 卡片-->
+            <div style="width: 50%  " id="content1">
+            <div class="card bg-info text-white">  <img src="https://i.loli.net/2019/10/06/RAeMvKjrzgouwy5.jpg" id="head12"/>
+                <div class="card-body">姓名:     徐冠宇</div>
+            </div>
+            <div class="card bg-info text-white">
+                <div class="card-body">出生日期:  2000.3.19</div>
+            </div>
+            <div class="card bg-info text-white">
+                <div class="card-body">家庭住址:  山东省滨州市无棣县水湾镇南双庙村</div>
+            </div>
+            <div class="card bg-info text-white">
+                <div class="card-body">教育经历:  水湾镇孟家中心小学->水湾镇中心小学->水湾镇中学->无棣一中->济南大学->985高校</div>
+            </div>
+            <div class="card bg-info text-white">
+                <div class="card-body">专业: 计算机科学与技术</div>
+            </div>
+
+        </div>
+        <!-- 隐藏-->
+
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                            个人情况(点击触发折叠)
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            姓名:徐冠宇
+
+                            <br>
+                            个人水平:
+                            <br>
+                            掌握<br>Html5,Css3,javascript,c/c++,java,python,bootstrap4,HTML dom;
+                            <br>
+                            认识<br>MySQL,PHP,Ajax,jQuery,json,laravel,正则表达式;
+
+                            <br>
+                            目前最喜欢的课程<br>数据结构
+                            <br>
+                            工作经历:
+                            <br>&nbsp 高考结束的暑假,在无棣县朝阳小区工作室当过两个月的编辑(实习),主要是负责出版
+                            <br>&nbsp 小学1--6年纪的教辅资料,能够熟练使用word(因此免面试进入学工新媒体(耽误学业已退))
+                            <br>
+                            教育经历:
+                            <br>&nbsp 我父亲是一名小学语文教师,我小学在我父亲的任教的学校就读,小学成绩良好,平均全班前五
+                            <br>&nbsp 六年级转学至水湾镇中心小学,开始住宿生活,由于当时痴迷网络游戏,成绩一路下滑,
+                            <br>&nbsp 成绩掉到全班十来名,以全镇第180来名的成绩进入水湾镇中学,全年级十个班,入学成绩全班第17
+                            <br>&nbsp 初二,因为有生物地理会考,放弃当时正在玩的QQ飞车,成为当时全班仅有的四个双A的同学之一
+                            <br>&nbsp 初三入学时,我已经是全校第八,全校分为12个班,我分配到九年级七班分班第一名
+                            <br>&nbsp 初三,除了第一次月考比比第一少了2分,其余大大小小考试一直是全班第一,中考,679分,全镇第六
+                            <br>&nbsp 高一,有幸分到无棣一中的两个预科班之一,分班成绩全班倒数第七,全校位次80多,英语全班倒数第二
+                            <br>&nbsp 高二,经过努力,成绩稳定在全班前十左右,数学考过全班第一,英语开始达到120+
+                            <br>&nbsp 高三,成绩进入全班前十,期末考试全班第三,全校第14
+                            <br>&nbsp 高考,发挥失常,心态不行,因数学考试紧张(和其他原因),后面直接
+                            <br>&nbsp 未复读 考入济南大学
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                            家庭情况
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <br>&nbsp 我从小生活在农村,父亲是一名小学语文教师(兼职司仪,保险),之前家里种过冬枣
+                            <br>&nbsp 因农业经济不景气,母亲现在年纪也大,算是家庭主妇
+                            <br>&nbsp 姐姐毕业与曲阜师范大学信息科学与工程学院的本科和研究生,现在任教于曲阜师范大学
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+                            个人期望
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            #3 内容：菜鸟教程 -- 学的不仅是技术，更是梦想！！！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 卡片-->
+
+        <div class="card-footer" id="foot">Powered By 徐冠宇 DoDo</div>
+    </div>
+<script>
+
+    window.onload=function () {
+    //下面的oenemy一律视为雪花ice
+
+        var content=document.getElementById('content');
+            var  down=setInterval(function self() {
+            var oenemy=new Image();
+            //判断产生哪种雪花
+                var option1=Math.random()*10;
+                if(option1<5)
+                {
+                    oenemy.src="https://i.loli.net/2019/10/19/EzIOm5LlNrdCjxy.jpg";
+                }
+                else
+                {
+                    oenemy.src="https://i.loli.net/2019/10/19/EQ6nTlzKfPImHMo.jpg";
+                }
+                oenemy.height=30;
+                oenemy.width=30;
+         /*    //判断雪花产生在哪一边
+            var option2=Math.random()*10;
+            if(option2<5)
+            {
+                var left=Math.random()*400;
+                oenemy.style.cssText="position:absolute;top:="+(oenemy.height=30)+"px;left:"+left+"px";
+            }
+            else
+            {
+                var left=Math.random()*400+1100;
+                oenemy.style.cssText="position:absolute;top:="+(oenemy.height=30)+"px;left:"+left+"px";
+            }*/
+                var left=Math.random()*1500;
+                oenemy.style.cssText="position:absolute;top:="+(oenemy.height=30)+"px;left:"+left+"px";
+                content.appendChild(oenemy);
+            //再设一个下落定时器
+                var a=Math.random()*4+2;
+                var b=Math.random()*2+1;
+                var option3=Math.random()*10;
+            var time=setInterval(function () {
+                //判断雪花往左往右飘
+                var iceleft;
+                if(option3>4)
+                    iceleft =oenemy.offsetLeft+b;
+                else
+                    iceleft=oenemy.offsetLeft-b;
+
+                oenemy.style.top=oenemy.offsetTop+a+"px";
+                oenemy.style.left=iceleft+"px";
+                var iceheight=oenemy.offsetTop+a;
+
+
+                if(iceheight>650||iceleft>1500)
+                {
+                    clearInterval(time);
+                    oenemy.parentNode.removeChild(oenemy);
+                }
+
+                },20);
+            //关闭特效函数
+                var effect=document.getElementById("effect");
+                effect.onclick=function(){
+
+                    if( effect.value=="开启特效")
+                    {
+                        effect.value="关闭特效";
+                        down=setInterval(self,500);
+                    }
+
+                    else if( effect.value=="关闭特效")
+                    {
+                        clearInterval(down);
+                        effect.value="开启特效";
+                    }
+
+                };
+        },500);
+
+
+    }
+</script>
+</body>
+</html>
