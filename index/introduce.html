@@ -16,8 +16,8 @@
     <style>
         /*页脚样式*/
         #foot{
-            position: absolute;
-            margin-top: 700px;
+            position:fixed;
+            bottom: 0;
             width: 100%;
             background-color: cornflowerblue;
             font-size: 17px;
@@ -58,7 +58,7 @@
 </head>
 <body>
     <div class="card">
-        <div class="card-header" id="head"><p>徐冠宇简历</p><input type="submit" class="btn btn-info" id="effect" value="关闭特效"> </div>
+        <div class="card-header" id="head"><p>徐冠宇简历<span id="headtime"></span></p><input type="submit" class="btn btn-info" id="effect" value="关闭特效"> </div>
         <div class="card-body" id="content">
 
             <!-- 卡片-->
@@ -116,7 +116,7 @@
                             <br>&nbsp 初三,除了第一次月考比比第一少了2分,其余大大小小考试一直是全班第一,中考,679分,全镇第六
                             <br>&nbsp 高一,有幸分到无棣一中的两个预科班之一,分班成绩全班倒数第七,全校位次80多,英语全班倒数第二
                             <br>&nbsp 高二,经过努力,成绩稳定在全班前十左右,数学考过全班第一,英语开始达到120+
-                            <br>&nbsp 高三,成绩进入全班前十,期末考试全班第三,全校第14
+                            <br>&nbsp 高三,成绩进入预科班全班前十,期末考试全班第三,全校第14
                             <br>&nbsp 高考,发挥失常,心态不行,因数学考试紧张(和其他原因),后面直接
                             <br>&nbsp 未复读 考入济南大学
                         </div>
@@ -165,6 +165,8 @@
             var  down=setInterval(function self() {
             var oenemy=new Image();
             //判断产生哪种雪花
+
+
                 var option1=Math.random()*10;
                 if(option1<5)
                 {
@@ -176,6 +178,7 @@
                 }
                 oenemy.height=30;
                 oenemy.width=30;
+
          /*    //判断雪花产生在哪一边
             var option2=Math.random()*10;
             if(option2<5)
@@ -189,8 +192,11 @@
                 oenemy.style.cssText="position:absolute;top:="+(oenemy.height=30)+"px;left:"+left+"px";
             }*/
                 var left=Math.random()*1500;
-                oenemy.style.cssText="position:absolute;top:="+(oenemy.height=30)+"px;left:"+left+"px";
-                content.appendChild(oenemy);
+                var top=Math.random()*500;
+                oenemy.style.cssText="position:absolute;top:"+top+"px;left:"+left+"px;z-index:2";
+
+                var first=document.body.firstChild;//得到页面的第一个元素
+                document.body.insertBefore(oenemy,first);//在得到的第一个元素之前插入
             //再设一个下落定时器
                 var a=Math.random()*4+2;
                 var b=Math.random()*2+1;
@@ -232,10 +238,16 @@
                     }
 
                 };
-        },500);
-
+        },300);
+    var showtime=setInterval(function () {
+        var headtime=document.getElementById("headtime");
+        var myDate=new Date();
+        headtime.innerText='    '+"当前时间："+myDate.toLocaleDateString()+'  '+myDate.getHours()+':'+ myDate.getMinutes()+':'+ myDate.getSeconds();
+    },500)
 
     }
+    //产生当前时间
+
 </script>
 </body>
 </html>
