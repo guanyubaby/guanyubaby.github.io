@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<title>第十二周的学习生活</title>
+<style>
+	body{
+	background-color:#bfb5dd;
+	}
+	p{
+		color: darksalmon;
+		font-size: 25px;
+		margin-left:5%;
+	}
+	#title{
+		color: cornflowerblue;
+		font-size: 36px;
+	}
+	#logo {
+        font-weight: 800;
+        font-size: 48px;
+
+        font-family: "黑体";
+        color: #7a8c8b;
+        background: -webkit-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
+    -moz-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
+    -ms-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
+        color: transparent;
+        /*设置字体颜色透明*/
+        -webkit-background-clip: text;
+        /*背景裁剪为文本形式*/
+        animation: ran 10s linear infinite;
+        /*动态10s展示*/
+        margin-left:35%;
+    }
+  img:hover{
+            transform: scale(3);
+        }
+
+</style>
+</head>
+<body>
+
+	<h1 id="logo">第十二周的学习生活</h1>
+	<div class="card-header" id="head"><p><span id="headtime"></span></p><input type="submit" class="btn btn-info" id="effect" value="关闭特效"> </div>
+	<img src="https://i.loli.net/2019/11/22/RnWDxZpwb1kj7dr.gif" title="没关系啊" alt="Free Bootstrap Template " style="height:200px;margin-left:40%">
+	<p >1.排球对垫以100的成绩通过</p>
+	<p>2.掌握word删除空白页的办法</p>
+	<p>3.期末冲刺冲冲冲</p>
+	<p>4.获得预研任务--基于HTML5的动画研究与应用</p>
+
+				<p>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----徐冠宇  2019.11.22  </p>
+ 
+</body>
+<script>
+
+    window.onload=function () {
+    //下面的oenemy一律视为雪花ice
+
+        var content=document.getElementById('content');
+            var  down=setInterval(function self() {
+            var oenemy=new Image();
+            //判断产生哪种雪花
+
+
+                var option1=Math.random()*10;
+                if(option1<5)
+                {
+                    oenemy.src="https://i.loli.net/2019/10/19/EzIOm5LlNrdCjxy.jpg";
+                }
+                else
+                {
+                    oenemy.src="https://i.loli.net/2019/10/19/EQ6nTlzKfPImHMo.jpg";
+                }
+                oenemy.height=30;
+                oenemy.width=30;
+
+         /*    //判断雪花产生在哪一边
+            var option2=Math.random()*10;
+            if(option2<5)
+            {
+                var left=Math.random()*400;
+                oenemy.style.cssText="position:absolute;top:="+(oenemy.height=30)+"px;left:"+left+"px";
+            }
+            else
+            {
+                var left=Math.random()*400+1100;
+                oenemy.style.cssText="position:absolute;top:="+(oenemy.height=30)+"px;left:"+left+"px";
+            }*/
+                var left=Math.random()*1500;
+                var top=Math.random()*500;
+                oenemy.style.cssText="position:absolute;top:"+top+"px;left:"+left+"px;z-index:2";
+
+                var first=document.body.firstChild;//得到页面的第一个元素
+                document.body.insertBefore(oenemy,first);//在得到的第一个元素之前插入
+            //再设一个下落定时器
+                var a=Math.random()*4+2;
+                var b=Math.random()*2+1;
+                var option3=Math.random()*10;
+                var option4=Math.random()*10;
+            var time=setInterval(function () {
+                //判断雪花往左往右飘
+                var iceleft;
+                if(option3>4)
+                    iceleft =oenemy.offsetLeft+b;
+                else
+                    iceleft=oenemy.offsetLeft-b;
+                //判断雪花往上往下飘落
+                if(option4>4)
+                    oenemy.style.top=oenemy.offsetTop+a+"px";
+                else
+                    oenemy.style.top=oenemy.offsetTop-a+"px";
+
+                oenemy.style.left=iceleft+"px";
+                var iceheight=oenemy.offsetTop;
+
+
+                if(iceheight>600||iceleft>1500||iceleft<0||iceheight<0)
+                {
+                    clearInterval(time);
+                    oenemy.parentNode.removeChild(oenemy);
+                }
+
+                },20);
+            //关闭特效函数
+                var effect=document.getElementById("effect");
+                effect.onclick=function(){
+
+                    if( effect.value=="开启特效")
+                    {
+                        effect.value="关闭特效";
+                        down=setInterval(self,500);
+                    }
+
+                    else if( effect.value=="关闭特效")
+                    {
+                        clearInterval(down);
+                        effect.value="开启特效";
+                    }
+
+                };
+        },300);
+    var showtime=setInterval(function () {
+        var headtime=document.getElementById("headtime");
+        var myDate=new Date();
+        headtime.innerText='    '+"当前时间："+myDate.toLocaleDateString()+'  '+myDate.getHours()+':'+ myDate.getMinutes()+':'+ myDate.getSeconds();
+    },500)
+
+    }
+    //产生当前时间
+
+</script>
+</html>
