@@ -1,0 +1,77 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+	box-sizing: border-box;
+}
+*:before,
+*:after{
+	box-sizing: border-box;
+}
+html,
+body{
+	min-height: 100%;
+	background-image: url("https://i.loli.net/2019/11/24/DjXZc5elu7PoNMR.gif") ;
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+}
+
+.container{
+	margin: 4% auto;
+	width: 210px;
+	height: 140px;
+	position: relative;
+	perspective: 1000;
+}
+#carousel{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	animation: rotation 20s infinite linear;
+
+}
+#carousel:hover{
+	animation-play-state: paused;
+}
+#carousel figure{
+	display: block;
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 10px;
+	top: 10px;
+	background-color: gold;
+	overflow: hidden;
+	border-radius: 100px;
+}
+#carousel figure:nth-child(1) {transform: rotateY(0deg)   translateZ(288px)  ;top:100px;}
+#carousel figure:nth-child(2) { transform: rotateY(60deg) translateZ(288px);top:100px;background-color: cornflowerblue}
+#carousel figure:nth-child(3) { transform: rotateY(120deg) translateZ(288px);top:100px;background-color: darkorange}
+#carousel figure:nth-child(4) { transform: rotateY(180deg) translateZ(288px);top:100px;background-color: blueviolet}
+#carousel figure:nth-child(5) { transform: rotateY(240deg) translateZ(288px);top:100px;background-color: azure}
+#carousel figure:nth-child(6) { transform: rotateY(300deg) translateZ(288px);top:100px;background-color: red}
+
+
+img{
+	width: 200px;
+	height: 200px;
+	-webkit-filter: grayscale(0);
+	cursor: pointer;
+	transition: all .5s ease;
+	border-radius: 100px;
+}
+
+
+@keyframes rotation{
+	from{
+		transform: rotateY(0deg) rotateZ(0deg) rotateX(0deg);
+
+	}
+	to{
+		transform: rotateY(360deg) rotateZ(0deg) rotateX(0deg);
+	}
+
