@@ -35,8 +35,15 @@ function showResult() {
     + '正确率' + rate.toFixed(2) + '%'+'打字速度'+rate1.toFixed(2) + '%';//toFixed(2)保留两位小数
 } 
 var i; 
+var p=0;
+function go1(){
+  if(p==0)
+  go();
+}
 function go(){
+ 
    show();
+   p=1;
    charBox.style.color="lightgreen";
    ignoreCount++;
     var h=document.getElementById('hi');
@@ -69,6 +76,7 @@ function go(){
          //红色颜色消失
          }
          setTimeout(go, 1000);//一段时间后显示；
+       
 }
 
 
